@@ -1,0 +1,21 @@
+version: '3.5'
+
+services:
+  postgres:
+    image: postgres:11.0
+    container_name: postgres
+    environment:
+      - POSTGRES_PASSWORD=secret
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: always
+
+  pgadmin:
+    image: thajeztah/pgadmin4
+    container_name: pgadmin
+    ports:
+      - '5050:5050'
+    restart: always
+
+volumes:
+  pgdata:
